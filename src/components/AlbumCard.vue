@@ -38,6 +38,7 @@ export default {
     .card-title{
         margin-bottom: 20px;
         color: white;
+        text-transform: uppercase;
     }
 }
 </style>
