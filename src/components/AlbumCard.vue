@@ -1,14 +1,17 @@
 <template>
   <div class="card p-2">
-    <img :src="poster" class="card-img-top" alt="" />
+    <div class="container-img">
+      <img :src="poster" class="card-img-top" alt="" />
+
+      <div class="overlay">
+          <h5>{{genre}}</h5>
+      </div>
+    </div>
     <div class="card-body text-center">
       <h4 class="card-title">{{title}}</h4>
       <h6 class="card-text">{{author}}</h6>
       <h6 class="card-text">{{year}}</h6>
     </div>
-    <!-- <div class="overlay">
-        <h5>{{genre}}</h5>
-    </div> -->
   </div>
 </template>
 
@@ -31,8 +34,34 @@ export default {
     height: 100%;
     color: #7f7d7b;
 
-    img{
+    .container-img{
         height: 220px;
+        position: relative;
+
+        &:hover{
+          .overlay{
+            opacity: 1;
+          }
+        }
+
+        img{
+          height: 100%;
+        }
+
+        .overlay{
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba($color: #000000, $alpha: .6);
+          opacity: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          backdrop-filter: blur(2px);
+        }
     }
 
     .card-title{

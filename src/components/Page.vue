@@ -1,6 +1,5 @@
 <template>
 <div>
-
   <div class="top-bar">
       <img src="https://www.ore25.it/wp-content/uploads/2020/01/file-spotify-logo-png-4.png" alt="">
   </div>
