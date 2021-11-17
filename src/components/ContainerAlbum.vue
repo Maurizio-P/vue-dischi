@@ -1,9 +1,9 @@
 <template>
   <div class="bg-color">
     <div class="container">
-      <SelectGenre @currentGenre="selectionHandler" :generi="filterGenre" />
+      <SelectGenre @currentGenre="saveGenre" :generi="filterGenre" />
       <div class="row row-cols-5">
-        <div class="col mb-3" v-for="(album, i) in selectionHandler()" :key="i">
+        <div class="col mb-3" v-for="(album, i) in selectionHandler" :key="i">
           <AlbumCard
             :title="album.title"
             :author="album.author"
@@ -51,20 +51,8 @@ export default {
       });
     },
 
-    selectionHandler(genre) {
-      if (!genre) {
-        return this.arrayAlbum
-      }
-
-      this.arrayfilter= []
-      return this.arrayAlbum.filter((album) => {
-        if (album.genre.toLowerCase().includes(genre.toLowerCase())) {
-          this.arrayfilter.push(album)
-        }
-        console.log(this.arrayfilter);
-        return this.arrayfilter
-        
-      })
+    saveGenre(genre) {
+      this.filterSelectGenre = genre
     }
 
   },
@@ -86,6 +74,17 @@ export default {
         } 
       }
       return generi
+    },
+
+    selectionHandler() {
+      if (!this.filterSelectGenre) {
+        return this.arrayAlbum
+      }
+      return this.arrayAlbum.filter((album) => {
+        return this.filterSelectGenre === album.genre
+        
+      })
+
     }
   }
 };
